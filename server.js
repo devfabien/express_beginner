@@ -22,10 +22,14 @@ const PORT = process.env.PORT || 5000;
 //   );
 //   next();
 // });
+
+// Body parser middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/api/blogs", require("./routes/api/blogs"));
 app.use("/api/members", require("./routes/api/members"));
 
 app.listen(PORT, () => {
